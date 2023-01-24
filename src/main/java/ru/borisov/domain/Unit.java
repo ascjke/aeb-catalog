@@ -1,4 +1,4 @@
-package ru.borisov;
+package ru.borisov.domain;
 
 public enum Unit {
     PIECES,

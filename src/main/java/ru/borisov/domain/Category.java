@@ -1,4 +1,4 @@
-package ru.borisov;
+package ru.borisov.domain;
 
 import ru.borisov.exception.CategoryException;
 
@@ -19,7 +19,7 @@ public class Category {
 
     private Category(String title) {
         id = ++counter;
-        if (isValidTitle(title)) {
+        if (title.length() <= TITLE_MAX_LENGTH) {
             this.title = title;
         } else {
             throw new CategoryException("Category title is too long!(more than 255 characters)");
@@ -42,9 +42,14 @@ public class Category {
         return products;
     }
 
-    public Category createCategory(String title) {
+    public void createCategory(String title) {
         Category category = new Category(title);
-        return categoryRegistry.put(category.getTitle(), category);
+        int categoryRegistrySize = categoryRegistry.size();
+        categoryRegistry.put(category.getTitle(), category);
+        if (categoryRegistrySize == categoryRegistry.size()) {
+            System.out.println("Category \"" + category.getTitle() + "\" already exist!");
+            counter--;
+        }
     }
 
     public void renameCategory(String oldTitle, String newTitle) {
@@ -55,7 +60,7 @@ public class Category {
     }
 
     public void showAllCategories() {
-        categoryRegistry.forEach((k, v) -> System.out.println(k + ": " + v));
+        categoryRegistry.forEach((title, category) -> System.out.println(title + ": " + category));
     }
 
     public void showCategory() {
@@ -70,24 +75,20 @@ public class Category {
         System.out.println(output);
     }
 
-    public static boolean isValidTitle(String title) {
-        return title.length() <= TITLE_MAX_LENGTH;
-    }
-
     public void addProduct(Product product) {
         if (!products.containsValue(product)) {
             products.put(products.size() + 1, product);
-            categoryRegistry.put(this.title, this);
-            System.out.println("Позиция \"" + product.getTitle() + "\" успешно добавлена!");
+            System.out.println("Product \"" + product.getTitle() + "\" has been added!");
         }
     }
 
     public void removeProduct(int productId) {
-        if (products.remove(productId) != null) {
-            categoryRegistry.put(this.title, this);
-            System.out.println("Позиция с id=" + productId + " успешно удалена!");
+        Product product = products.get(productId);
+        if (product != null) {
+            products.remove(productId);
+            System.out.println("Product " + product.getTitle() + " deleted!");
         } else {
-            System.out.println("Позиции с id=" + productId + " не существует!");
+            System.out.println("Product with id=" + productId + " doesn't exist!");
         }
     }
 
