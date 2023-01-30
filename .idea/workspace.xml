@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af37da9e-9e44-47e5-8f38-db274fe5613d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/CLI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/repository/ProductRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/exception/Catalog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/exception/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/exception/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/exception/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Catalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -53,7 +55,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/ascjke/Documents/IdeaProjects/code-sharing-platform",
+    "last_opened_file_path": "/home/ascjke/Documents/IdeaProjects/subsidies-oneclick",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -69,6 +71,9 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ru.borisov" />
       <recent name="ru.borisov.exception" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.borisov" />
     </key>
   </component>
   <component name="RunManager">
@@ -100,7 +105,12 @@
       <option name="presentableId" value="Default" />
       <updated>1674477130679</updated>
       <workItem from="1674477131763" duration="9937000" />
-      <workItem from="1674559886040" duration="7249000" />
+      <workItem from="1674559886040" duration="7661000" />
+      <workItem from="1674737395792" duration="6111000" />
+      <workItem from="1674825934206" duration="599000" />
+      <workItem from="1674880545296" duration="12859000" />
+      <workItem from="1674962148869" duration="23199000" />
+      <workItem from="1675082082141" duration="307000" />
     </task>
     <servers />
   </component>

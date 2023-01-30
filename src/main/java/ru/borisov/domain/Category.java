@@ -1,23 +1,25 @@
 package ru.borisov.domain;
 
 import ru.borisov.exception.CategoryException;
+import ru.borisov.exception.ProductException;
+import ru.borisov.repository.ProductRepository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 public class Category {
 
     private static final int TITLE_MAX_LENGTH = 255;
-    private static Map<String, Category> categoryRegistry = new HashMap<>();
     private static int counter = 0;
-    private final int id;
+    private final ProductRepository productRepository;
+    private int id;
     private String title;
-    private final Map<Integer, Product> products = new TreeMap<>();
+    private final Map<Integer, Product> products = new HashMap<>();
+    private int productNumber = 0;
 
-    private Category(String title) {
+    public Category(String title, ProductRepository productRepository) {
+        this.productRepository = productRepository;
         id = ++counter;
         if (title.length() <= TITLE_MAX_LENGTH) {
             this.title = title;
@@ -42,54 +44,33 @@ public class Category {
         return products;
     }
 
-    public void createCategory(String title) {
-        Category category = new Category(title);
-        int categoryRegistrySize = categoryRegistry.size();
-        categoryRegistry.put(category.getTitle(), category);
-        if (categoryRegistrySize == categoryRegistry.size()) {
-            System.out.println("Category \"" + category.getTitle() + "\" already exist!");
-            counter--;
-        }
+    public static int getCounter() {
+        return counter;
     }
 
-    public void renameCategory(String oldTitle, String newTitle) {
-        Category editedCategory = categoryRegistry.get(oldTitle);
-        editedCategory.setTitle(newTitle);
-        categoryRegistry.remove(oldTitle);
-        categoryRegistry.put(newTitle, editedCategory);
+    public static void setCounter(int counter) {
+        Category.counter = counter;
     }
 
-    public void showAllCategories() {
-        categoryRegistry.forEach((title, category) -> System.out.println(title + ": " + category));
-    }
-
-    public void showCategory() {
-        Map<Integer, Product> productsEdited = products.entrySet().stream()
-                .filter(es -> es.getValue().getAmount() > 0)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        String output = "Category{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", products=" + productsEdited +
-                '}';
-        System.out.println(output);
-    }
-
-    public void addProduct(Product product) {
+    public void addProductToCategory(Product product) {
         if (!products.containsValue(product)) {
-            products.put(products.size() + 1, product);
-            System.out.println("Product \"" + product.getTitle() + "\" has been added!");
+            if (!productRepository.getProducts().containsValue(product)) {
+                productRepository.createProduct(product);
+                System.out.println("Creating new product " + product.getTitle() + " ...");
+            }
+            products.put(++productNumber, product);
+        } else {
+            System.out.println("Product \"" + product.getTitle() + "\" already exist in this Category");
         }
     }
 
-    public void removeProduct(int productId) {
-        Product product = products.get(productId);
-        if (product != null) {
-            products.remove(productId);
-            System.out.println("Product " + product.getTitle() + " deleted!");
-        } else {
-            System.out.println("Product with id=" + productId + " doesn't exist!");
+    public void removeProduct(int productNumber) {
+        Product product = productRepository.getProducts().get(productNumber);
+        if (product == null) {
+            throw new ProductException("Product with number=" + productNumber + " doesn't exist!");
         }
+        products.remove(productNumber);
+        System.out.println("Product " + product.getTitle() + " was deleted from this Category!");
     }
 
     @Override
@@ -97,12 +78,12 @@ public class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
-        return id == category.id && Objects.equals(title, category.title) && Objects.equals(products, category.products);
+        return Objects.equals(title, category.title) && Objects.equals(products, category.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, products);
+        return Objects.hash(title, products);
     }
 
     @Override
@@ -111,6 +92,13 @@ public class Category {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", products=" + products +
+                '}';
+    }
+
+    public String toStringWithoutProducts() {
+        return "Category{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 '}';
     }
 }
