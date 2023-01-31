@@ -170,7 +170,7 @@ public class CLI {
         String productNum = scanner.next();
         int productsInCategory = category.getProducts().size() + 1;
         if (isValidOption(productNum, productsInCategory)) {
-            Product product = category.getProducts().get(productNum);
+            Product product = category.getProducts().get(Integer.parseInt(productNum));
             category.removeProduct(Integer.parseInt(productNum), product);
         } else {
             System.out.println("Please enter an integer value between 1 and " + (productsInCategory));

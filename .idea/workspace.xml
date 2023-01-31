@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af37da9e-9e44-47e5-8f38-db274fe5613d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/CLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/CLI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Catalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Catalog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/borisov/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/borisov/repository/ProductRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +102,7 @@
       <workItem from="1674880545296" duration="12859000" />
       <workItem from="1674962148869" duration="23199000" />
       <workItem from="1675082082141" duration="853000" />
-      <workItem from="1675164930185" duration="12394000" />
+      <workItem from="1675164930185" duration="13179000" />
     </task>
     <servers />
   </component>
