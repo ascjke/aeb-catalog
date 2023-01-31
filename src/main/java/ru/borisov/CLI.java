@@ -4,6 +4,7 @@ import ru.borisov.domain.Catalog;
 import ru.borisov.domain.Category;
 import ru.borisov.domain.Product;
 import ru.borisov.domain.Unit;
+import ru.borisov.exception.ProductException;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -31,6 +32,7 @@ public class CLI {
 
     private static final String[] ADD_PRODUCT_MENU_OPTIONS =
             {"\n1- Add a new product",
+                    "2- Remove product by id",
                     "0- Back"};
 
     private static final String[] CATEGORY_REPO_MENU_OPTIONS =
@@ -93,45 +95,38 @@ public class CLI {
         System.out.println();
         if (!catalog.getCategories().isEmpty()) {
             catalog.showCatalogCategories();
-            System.out.print("Choose the category ID to see the products or 0 to back: ");
+            System.out.print("Choose the category number to see the products or 0 to back: ");
 
-            String categoryId = scanner.next();
+            String categoryNum = scanner.next();
             int categoriesAmount = catalog.getCategories().size() + 1;
-            if (isValidOption(categoryId, categoriesAmount)) {
-                if (categoryId.equals("0")) {
+            if (isValidOption(categoryNum, categoriesAmount)) {
+                if (categoryNum.equals("0")) {
                     categoryMenu();
                 }
-                Category category = catalog.getCategories().get(Integer.parseInt(categoryId) - 1);
+                Category category = catalog.getCategories().get(Integer.parseInt(categoryNum) - 1);
                 Map<Integer, Product> products = category.getProducts();
                 if (products.isEmpty()) {
                     System.out.println("The are no products in category " + category.getTitle() + " yet");
-                    while (true) {
-                        printMenu(ADD_PRODUCT_MENU_OPTIONS);
-                        String option = scanner.next();
-                        if (isValidOption(option, ADD_PRODUCT_MENU_OPTIONS.length)) {
-                            switch (option) {
-                                case "1" -> addProductToCategoryMenu(category);
-                                case "0" -> {
-                                    System.out.println();
-                                    categoriesMenu();
-                                }
-                            }
-                        } else {
-                            System.out.println("Please enter an integer value between 1 and " + (ADD_PRODUCT_MENU_OPTIONS.length - 1));
-                        }
-                    }
+                    addOrRemoveProductOption(category);
                 } else {
                     int index = 0;
                     for (Product product : products.values()) {
-                        System.out.println(++index + ": " + product);
+                        System.out.println(++index + ". " + product);
                     }
-                    System.out.print("Choose the product number to change his price or amount: ");
+                    System.out.print("Choose the product number to change his price or amount.\nIf you want add some new product type \"add\".\nOr enter the 0 to go back.\n");
                     String productNumber = scanner.next();
+                    if (productNumber.equals("0")) {
+                        categoriesMenu();
+                    }
+                    if (productNumber.equals("add")) {
+                        addOrRemoveProductOption(category);
+                    }
                     if (isValidOption(productNumber, products.size() + 1)) {
                         int _productNumber = Integer.parseInt(productNumber);
                         productsOfCategoryMenu(category, _productNumber);
                     } else {
                         System.out.println("Please enter an integer value between 1 and " + (products.size()));
+                        categoriesMenu();
                     }
                 }
             } else {
@@ -147,6 +142,39 @@ public class CLI {
                 System.out.println("Type 0 to back");
                 categoriesMenu();
             }
+        }
+    }
+
+    private void addOrRemoveProductOption(Category category) {
+        while (true) {
+            printMenu(ADD_PRODUCT_MENU_OPTIONS);
+            String option = scanner.next();
+            if (isValidOption(option, ADD_PRODUCT_MENU_OPTIONS.length)) {
+                switch (option) {
+                    case "1" -> addProductToCategoryMenu(category);
+                    case "2" -> removeProductFromCategoryMenu(category);
+                    case "0" -> {
+                        System.out.println();
+                        categoriesMenu();
+                    }
+                }
+            } else {
+                System.out.println("Please enter an integer value between 1 and " + (ADD_PRODUCT_MENU_OPTIONS.length - 1));
+            }
+        }
+    }
+
+    private void removeProductFromCategoryMenu(Category category) {
+        category.showProducts();
+        System.out.print("Choose the product number to remove: ");
+        String productNum = scanner.next();
+        int productsInCategory = category.getProducts().size() + 1;
+        if (isValidOption(productNum, productsInCategory)) {
+            Product product = category.getProducts().get(productNum);
+            category.removeProduct(Integer.parseInt(productNum), product);
+        } else {
+            System.out.println("Please enter an integer value between 1 and " + (productsInCategory));
+            removeProductFromCategoryMenu(category);
         }
     }
 
@@ -173,11 +201,15 @@ public class CLI {
                         System.out.print("Please enter the amount of the product: ");
                         String amount = scanner.next();
                         if (Pattern.matches("^\\d{1,}$", amount)) {
-                            Product product = new Product(title, unit, price);
+                            Product product = new Product(title, unit, price, Integer.parseInt(amount));
                             category.addProductToCategory(product);
                             System.out.println("Product " + product.getTitle() + " has been added to category " + category.getTitle());
                             if (!catalog.getProductRepository().getProducts().containsValue(product)) {
-                                catalog.getProductRepository().createProduct(product);
+                                catalog.getProductRepository().addProductToRepository(product);
+                            } else {
+                                Product _product = catalog.getProductRepository().getProducts().get(product.getTitle());
+                                _product.addAmount(product.getAmount());
+                                catalog.getProductRepository().getProducts().put(_product.getTitle(), _product);
                             }
                             categoriesMenu();
                         } else {
@@ -199,11 +231,11 @@ public class CLI {
             String option = scanner.next();
             if (isValidOption(option, CATALOG_MENU_OPTIONS.length)) {
                 switch (option) {
-                    case "1" -> changeProductPrice(category, productNumber);
-                    case "2" -> changeProductAmount(category, productNumber);
+                    case "1" -> changeProductAmount(category, productNumber);
+                    case "2" -> changeProductPrice(category, productNumber);
                     case "0" -> {
                         System.out.println();
-                        mainMenu();
+                        categoriesMenu();
                     }
                 }
             } else {
@@ -231,16 +263,27 @@ public class CLI {
                         productsRegistry.put(product.getTitle(), productFromRegistry);
 
                         System.out.println("Amount of product " + product.getTitle() + " was increased by " + args[1]);
+                        productsOfCategoryMenu(category, productNumber);
                     }
                     case "-" -> {
-                        product.subtractAmount(Integer.parseInt(args[1]));
+                        try {
+                            product.subtractAmount(Integer.parseInt(args[1]));
+                        } catch (ProductException ex) {
+                            System.out.println(ex.getMessage());
+                            productsOfCategoryMenu(category, productNumber);
+                        }
 
-                        Map<String, Product> productsRegistry = catalog.getProductRepository().getProducts();
-                        Product productFromRegistry = productsRegistry.get(product.getTitle());
-                        productFromRegistry.subtractAmount(Integer.parseInt(args[1]));
-                        productsRegistry.put(product.getTitle(), productFromRegistry);
+                        Map<String, Product> productRepository = catalog.getProductRepository().getProducts();
+                        Product productFromRegistry = productRepository.get(product.getTitle());
+                        try {
+                            productFromRegistry.subtractAmount(Integer.parseInt(args[1]));
+                        } catch (ProductException ex) {
+                            productFromRegistry.setAmount(0);
+                        }
+                        productRepository.put(product.getTitle(), productFromRegistry);
 
                         System.out.println("Amount of product " + product.getTitle() + " was decreased by " + args[1]);
+                        productsOfCategoryMenu(category, productNumber);
                     }
                 }
             } else {
@@ -261,6 +304,7 @@ public class CLI {
                 Map<String, Product> productsRegistry = catalog.getProductRepository().getProducts();
                 productsRegistry.put(product.getTitle(), product);
                 System.out.println(product.getTitle() + " price has been changed!");
+                productsOfCategoryMenu(category, productNumber);
             } else {
                 System.out.println("Please enter the digit value (non 0)");
             }
@@ -394,7 +438,7 @@ public class CLI {
                         if (catalog.getProductRepository().getProducts().containsValue(product)) {
                             System.out.println("Product " + product.getTitle() + " already exists!");
                         } else {
-                            catalog.getProductRepository().createProduct(product);
+                            catalog.getProductRepository().addProductToRepository(product);
                             System.out.println("Product " + product.getTitle() + " has been created!");
                             productsRepoMenu();
                         }

@@ -13,8 +13,14 @@ public class ProductRepository {
         return products;
     }
 
-    public void createProduct(Product product) {
-        products.put(product.getTitle(), product);
+    public void addProductToRepository(Product product) {
+        Product _product = new Product(
+                product.getTitle(),
+                product.getUnit(),
+                product.getPrice(),
+                product.getAmount()
+        );
+        products.put(product.getTitle(), _product);
     }
 
     public void showAllProducts() {

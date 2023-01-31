@@ -35,6 +35,18 @@ public class Product {
         return amount;
     }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -84,8 +96,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "title='" + title + '\'' +
+        return "'" + title + '\'' +
                 ", unit=" + unit +
                 ", price=" + price +
                 ", amount=" + amount +

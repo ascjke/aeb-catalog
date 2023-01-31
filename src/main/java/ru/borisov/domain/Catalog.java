@@ -6,6 +6,7 @@ import ru.borisov.repository.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Catalog {
 
@@ -30,39 +31,27 @@ public class Catalog {
         return categories;
     }
 
-    public void createCategory(String categoryTitle) {
-        Category category = new Category(categoryTitle, productRepository);
-        categoryRepository.createCategory(category);
-    }
-
     public void addCategory(String categoryTitle) {
         Category category = new Category(categoryTitle, productRepository);
+
         if (!categoryRepository.getCategories().containsValue(category)) {
             categoryRepository.getCategories().put(category.getId(), category);
             System.out.println("Creating new category " + categoryTitle + " ...");
+        } else {
+            for (Map.Entry<Integer, Category> entry : categoryRepository.getCategories().entrySet()) {
+                if (category.equals(entry.getValue())) {
+                    int id = entry.getValue().getId();
+                    category.setId(id);
+                }
+            }
         }
+
         if (!categories.contains(category)) {
             categories.add(category);
             System.out.println("Category " + category.getTitle() + " has added to this Catalog!");
         } else {
-            Category.setCounter(Category.getCounter() -1);
             System.out.println("Category " + category.getTitle() + " has already exist in this Catalog!");
         }
-    }
-
-    public void renameCategory(int categoryId, String newTitle) {
-        Category category = categories.stream()
-                .filter(c -> c.getId() == categoryId)
-                .findFirst()
-                .orElseThrow(() -> new CategoryException("This Catalog doesn't have category with id=" + categoryId));
-        String oldTitle = category.getTitle();
-
-        categories.remove(category);
-        category.setTitle(newTitle);
-        categories.add(category);
-        categoryRepository.renameCategory(categoryId, newTitle);
-
-        System.out.println("Category with title: " + oldTitle + " was renamed to: " + newTitle);
     }
 
     public void removeCategoryFromCatalog(int categoryId) {
@@ -71,6 +60,7 @@ public class Catalog {
             throw new CategoryException("Category with id= " + categoryId + " not found");
         }
         if (categories.remove(category)) {
+            Category.setCounter(Category.getCounter() - 1);
             System.out.println("Category " + category.getTitle() + " was removed from these Catalog!");
         } else {
             System.out.println("Category " + category.getTitle() + " don't exist in these Catalog!");
@@ -82,14 +72,7 @@ public class Catalog {
         if (categories.isEmpty()) {
             System.out.println("There are no categories yet");
         } else {
-            for (Category category : categories) {
-                System.out.println(category.getId() + ": " + category.getTitle());
-            }
+            categories.forEach(cat -> System.out.println(categories.indexOf(cat) + 1 + ". " + cat.getTitle()));
         }
-    }
-
-    public void showAllCatalogCategories() {
-        System.out.println("All categories of catalog: ");
-        categories.forEach(Category::toStringWithoutProducts);
     }
 }

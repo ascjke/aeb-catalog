@@ -1,7 +1,6 @@
 package ru.borisov.domain;
 
 import ru.borisov.exception.CategoryException;
-import ru.borisov.exception.ProductException;
 import ru.borisov.repository.ProductRepository;
 
 import java.util.HashMap;
@@ -32,6 +31,10 @@ public class Category {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -54,23 +57,26 @@ public class Category {
 
     public void addProductToCategory(Product product) {
         if (!products.containsValue(product)) {
-            if (!productRepository.getProducts().containsValue(product)) {
-                productRepository.createProduct(product);
-                System.out.println("Creating new product " + product.getTitle() + " ...");
-            }
             products.put(++productNumber, product);
         } else {
             System.out.println("Product \"" + product.getTitle() + "\" already exist in this Category");
         }
     }
 
-    public void removeProduct(int productNumber) {
-        Product product = productRepository.getProducts().get(productNumber);
-        if (product == null) {
-            throw new ProductException("Product with number=" + productNumber + " doesn't exist!");
+    public void removeProduct(int productNum, Product product) {
+        if (productRepository.getProducts().containsValue(product)) {
+            int amountToBeSubtracted = product.getAmount();
+            Product _product = productRepository.getProducts().get(product.getTitle());
+            _product.setAmount(_product.getAmount() - amountToBeSubtracted);
+            productRepository.getProducts().put(_product.getTitle(), _product);
         }
-        products.remove(productNumber);
+        products.remove(productNum);
+        this.productNumber = this.productNumber - 1;
         System.out.println("Product " + product.getTitle() + " was deleted from this Category!");
+    }
+
+    public void showProducts() {
+        products.forEach((k, v) -> System.out.println(k + ". " + v));
     }
 
     @Override

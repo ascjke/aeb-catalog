@@ -17,7 +17,6 @@ public class CategoryRepository {
     public void createCategory(Category category) {
         categories.put(category.getId(), category);
         System.out.println("Category " + category.getTitle() + " has created!");
-
     }
 
     public void renameCategory(int categoryId, String newTitle) {
