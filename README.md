@@ -2,7 +2,7 @@
 # Requirements
 You need a Java JDK 17+ installed.
 
-# Usage and Demo
+# How to run application
 **Step 1:** Download repository, extract it.
 
 **Step 2:** Start an application with following command:
