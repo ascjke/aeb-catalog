@@ -55,15 +55,32 @@ public class Catalog {
     }
 
     public void removeCategoryFromCatalog(int categoryId) {
-        Category category = categoryRepository.getCategories().get(categoryId);
+        Category category = this.getCategories().get(categoryId - 1);
+        int id = 0;
+        for (Map.Entry<Integer, Category> entry : categoryRepository.getCategories().entrySet()) {
+            if (category.equals(entry.getValue())) {
+                id = entry.getValue().getId();
+            }
+        }
         if (category == null) {
             throw new CategoryException("Category with id= " + categoryId + " not found");
         }
         if (categories.remove(category)) {
+            Category removedCategory = categoryRepository.getCategories().get(id);
+            List<Product> productsToBeSubtracted = removedCategory.getProducts().values().stream().toList();
+            List<Product> productsFromRepository = productRepository.getProducts().values().stream().toList();
+            for (Product productFromRepo : productsFromRepository) {
+                for (Product product : productsToBeSubtracted) {
+                    if (productFromRepo.equals(product)) {
+                        productFromRepo.setAmount(productFromRepo.getAmount() - product.getAmount());
+                        productRepository.getProducts().put(productFromRepo.getTitle(), productFromRepo);
+                    }
+                }
+            }
             Category.setCounter(Category.getCounter() - 1);
             System.out.println("Category " + category.getTitle() + " was removed from these Catalog!");
         } else {
-            System.out.println("Category " + category.getTitle() + " don't exist in these Catalog!");
+            System.out.println("Category " + category.getTitle() + " doesn't exist on these Catalog!");
         }
     }
 

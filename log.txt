@@ -1,0 +1,494 @@
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories: 
+There are no categories yet
+0- Back
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+There are no categories with products
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Enter the category title: Creating new category Laptop ...
+Category Laptop has added to this Catalog!
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories: 
+1. Laptop
+Choose the category number to see the products or 0 to back: 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Enter the category title: Creating new category Notebooks ...
+Category Notebooks has added to this Catalog!
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Enter the category title: Creating new category PC ...
+Category PC has added to this Catalog!
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Enter the category title: Creating new category Motherboard ...
+Category Motherboard has added to this Catalog!
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories: 
+1. Laptop
+2. Notebooks
+3. PC
+4. Motherboard
+Choose the category number to see the products or 0 to back: 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+There are no categories with products
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories: 
+1. Laptop
+2. Notebooks
+3. PC
+4. Motherboard
+Choose the category number to see the products or 0 to back: The are no products in category Laptop yet
+
+1. Add a new product
+2. Remove product by id
+0. Back
+Choose your option : Please enter the title of new product: 1- PIECES
+2- PACKAGES
+3- KG
+4- LITRES
+Please choose the unit of the product: Please enter the price of the product for each unit: Please enter the amount of the product: Product Lenovo Legion 15 has been added to category Laptop
+
+Categories: 
+1. Laptop
+2. Notebooks
+3. PC
+4. Motherboard
+Choose the category number to see the products or 0 to back: 1. 'Lenovo Legion 15', unit=PIECES, price=67999.0, amount=11}
+
+Choose the product number to change his price or amount.
+If you want add or remove some new product type "add" or "remove".
+Or enter the 0 to go back.
+
+Categories: 
+1. Laptop
+2. Notebooks
+3. PC
+4. Motherboard
+Choose the category number to see the products or 0 to back: The are no products in category Notebooks yet
+
+1. Add a new product
+2. Remove product by id
+0. Back
+Choose your option : Please enter the title of new product: 1- PIECES
+2- PACKAGES
+3- KG
+4- LITRES
+Please choose the unit of the product: Please enter the price of the product for each unit: Please enter the amount of the product: Amount can be only integer number!
+Please enter the digit value (non 0)
+Please enter the amount of the product: Product Lenovo Legion 15 has been added to category Notebooks
+
+Categories: 
+1. Laptop
+2. Notebooks
+3. PC
+4. Motherboard
+Choose the category number to see the products or 0 to back: 1. 'Lenovo Legion 15', unit=PIECES, price=4.0, amount=4}
+
+Choose the product number to change his price or amount.
+If you want add or remove some new product type "add" or "remove".
+Or enter the 0 to go back.
+
+Categories: 
+1. Laptop
+2. Notebooks
+3. PC
+4. Motherboard
+Choose the category number to see the products or 0 to back: 1. 'Lenovo Legion 15', unit=PIECES, price=67999.0, amount=11}
+
+Choose the product number to change his price or amount.
+If you want add or remove some new product type "add" or "remove".
+Or enter the 0 to go back.
+
+Categories: 
+1. Laptop
+2. Notebooks
+3. PC
+4. Motherboard
+Choose the category number to see the products or 0 to back: 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1. Show all existing categories
+2. Create new category
+3. Rename existing category
+0. Back
+Choose your option : 
+All categories: 
+1: Laptop
+2: Notebooks
+3: PC
+4: Motherboard
+0- Back
+
+1. Show all existing categories
+2. Create new category
+3. Rename existing category
+0. Back
+Choose your option : Please enter the title of new category: Category GPU has created!
+
+1. Show all existing categories
+2. Create new category
+3. Rename existing category
+0. Back
+Choose your option : 
+All categories: 
+1: Laptop
+2: Notebooks
+3: PC
+4: Motherboard
+5: GPU
+0- Back
+
+1. Show all existing categories
+2. Create new category
+3. Rename existing category
+0. Back
+Choose your option : 
+All categories: 
+1: Laptop
+2: Notebooks
+3: PC
+4: Motherboard
+5: GPU
+Enter the id of category, which you want to rename: 
+Or enter 0 to go back: 
+Enter the new title of category Laptop: The category title has been changed!
+
+1. Show all existing categories
+2. Create new category
+3. Rename existing category
+0. Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : 
+All products: 
+1: 'Lenovo Legion 15', unit=PIECES, price=67999.0, amount=15}
+0- Back
+
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : Please enter the title of new product: 1- PIECES
+2- PACKAGES
+3- KG
+4- LITRES
+Please choose the unit of the product: Please enter the price of the product for each unit: Product Acer aspire 5739G has been created!
+
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : 
+All products: 
+1: 'Lenovo Legion 15', unit=PIECES, price=67999.0, amount=15}
+2: 'Acer aspire 5739G', unit=PIECES, price=24999.0, amount=0}
+0- Back
+
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories with products:
+Category{id=1, title='Laptops', products={1='Lenovo Legion 15', unit=PIECES, price=67999.0, amount=11}}}
+Category{id=2, title='Notebooks', products={1='Lenovo Legion 15', unit=PIECES, price=4.0, amount=4}}}
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : Categories: 
+1. Laptops
+2. Notebooks
+3. PC
+4. Motherboard
+Choose category number, which you want to remove: 
+Or enter 0 to go back: 
+Category Notebooks was removed from these Catalog!
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories: 
+1. Laptops
+2. PC
+3. Motherboard
+Choose the category number to see the products or 0 to back: 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1. Show all existing categories
+2. Create new category
+3. Rename existing category
+0. Back
+Choose your option : 
+All categories: 
+1: Laptops
+2: Notebooks
+3: PC
+4: Motherboard
+5: GPU
+0- Back
+
+1. Show all existing categories
+2. Create new category
+3. Rename existing category
+0. Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : 
+All products: 
+1: 'Lenovo Legion 15', unit=PIECES, price=67999.0, amount=11}
+2: 'Acer aspire 5739G', unit=PIECES, price=24999.0, amount=0}
+0- Back
+
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories with products:
+Category{id=1, title='Laptops', products={1='Lenovo Legion 15', unit=PIECES, price=67999.0, amount=11}}}
+
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+Categories: 
+1. Laptops
+2. PC
+3. Motherboard
+Choose the category number to see the products or 0 to back: The are no products in category Motherboard yet
+
+1. Add a new product
+2. Remove product by id
+0. Back
+Choose your option : Please enter the title of new product: 1- PIECES
+2- PACKAGES
+3- KG
+4- LITRES
+Please choose the unit of the product: Please enter the price of the product for each unit: Please enter the amount of the product: Product AORUS B550 has been added to category Motherboard
+
+Categories: 
+1. Laptops
+2. PC
+3. Motherboard
+Choose the category number to see the products or 0 to back: 1. 'AORUS B550', unit=PIECES, price=7.0, amount=7}
+
+Choose the product number to change his price or amount.
+If you want add or remove some new product type "add" or "remove".
+Or enter the 0 to go back.
+
+1. Change product amount
+2. Change product price
+0. Back
+Choose your option : Enter the new price of product: AORUS B550 price has been changed!
+
+1. Change product amount
+2. Change product price
+0. Back
+Choose your option : 
+
+Categories: 
+1. Laptops
+2. PC
+3. Motherboard
+Choose the category number to see the products or 0 to back: 1. 'AORUS B550', unit=PIECES, price=18999.0, amount=7}
+
+Choose the product number to change his price or amount.
+If you want add or remove some new product type "add" or "remove".
+Or enter the 0 to go back.
+
+Categories: 
+1. Laptops
+2. PC
+3. Motherboard
+Choose the category number to see the products or 0 to back: 1. 'AORUS B550', unit=PIECES, price=18999.0, amount=7}
+
+Choose the product number to change his price or amount.
+If you want add or remove some new product type "add" or "remove".
+Or enter the 0 to go back.
+
+1. Change product amount
+2. Change product price
+0. Back
+Choose your option : If you want add amount, type: + <amount>
+If you want subtract amount, type: - <amount>
+First argument must be + or -, second argument digit!
+Amount of product AORUS B550 was decreased by 1
+
+1. Change product amount
+2. Change product price
+0. Back
+Choose your option : 
+
+Categories: 
+1. Laptops
+2. PC
+3. Motherboard
+Choose the category number to see the products or 0 to back: 1. 'AORUS B550', unit=PIECES, price=18999.0, amount=5}
+
+Choose the product number to change his price or amount.
+If you want add or remove some new product type "add" or "remove".
+Or enter the 0 to go back.
+
+Categories: 
+1. Laptops
+2. PC
+3. Motherboard
+Choose the category number to see the products or 0 to back: 
+1. Show all existing categories. Enter here if you want add/remove products
+2. Show categories with products
+3. Add category to this catalog
+4. Remove category from this catalog
+0. Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : 
+All products: 
+1: 'AORUS B550', unit=PIECES, price=18999.0, amount=5}
+2: 'Lenovo Legion 15', unit=PIECES, price=67999.0, amount=11}
+3: 'Acer aspire 5739G', unit=PIECES, price=24999.0, amount=0}
+0- Back
+
+1- Show all existing products
+2- Create new product
+0- Back
+Choose your option : 
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : Please enter an integer value between 1 and 3
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : Please enter an integer value between 1 and 3
+1. Enter into catalog
+2. Categories repository
+3. Products repository
+0. Exit
+Choose your option : 

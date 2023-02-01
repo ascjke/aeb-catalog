@@ -76,7 +76,12 @@ public class Category {
     }
 
     public void showProducts() {
-        products.forEach((k, v) -> System.out.println(k + ". " + v));
+        if (products.isEmpty()) {
+            System.out.println("The are no products in category Laptop yet\n");
+        } else {
+            products.forEach((k, v) -> System.out.println(k + ". " + v));
+            System.out.println();
+        }
     }
 
     @Override
@@ -98,13 +103,6 @@ public class Category {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", products=" + products +
-                '}';
-    }
-
-    public String toStringWithoutProducts() {
-        return "Category{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
                 '}';
     }
 }
